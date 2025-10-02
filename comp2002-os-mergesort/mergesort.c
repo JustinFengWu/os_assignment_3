@@ -38,7 +38,8 @@ void merge(int leftstart, int leftend, int rightstart, int rightend){
 	}
 
 	// Copy back into A
-	for (int i = leftstart; i <= rightend; i++) {
+	int i;
+	for (i = leftstart; i <= rightend; i++) {
 		A[i] = B[i];
 	}
 
@@ -67,7 +68,6 @@ void * parallel_mergesort(void *arg){
 
 	// reaching base case
     if (left == right) {
-        free(args);
         return;
     }
 
@@ -87,8 +87,6 @@ void * parallel_mergesort(void *arg){
         my_mergesort(mid + 1, right);
     }
     merge(left, mid, mid + 1, right);
-
-    free(args);
     return;
 }
 
