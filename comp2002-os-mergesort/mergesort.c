@@ -42,13 +42,13 @@ void merge(int leftstart, int leftend, int rightstart, int rightend){
 		A[i] = B[i];
 	}
 
-	return;
+	return NULL;
 }
 
 /* this function will be called by parallel_mergesort() as its base case. */
 void my_mergesort(int left, int right){
 	if (left == right) {
-		return;
+		return NULL;
 	}
 
 	int mid = (left + right) / 2;
@@ -68,7 +68,7 @@ void * parallel_mergesort(void *arg){
 	// reaching base case
     if (left == right) {
         free(args);
-        return;
+        return NULL;
     }
 
     if (level < cutoff) {
@@ -89,7 +89,7 @@ void * parallel_mergesort(void *arg){
     merge(left, mid, mid + 1, right);
 
     free(args);
-    return;
+    return NULL;
 }
 
 /* we build the argument for the parallel_mergesort function. */
